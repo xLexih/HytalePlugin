@@ -1,0 +1,13 @@
+serverAddr = "address"
+serverPort = 7000
+transport.protocol = "quic"
+
+auth.method = "token"
+auth.token = ""
+
+[[proxies]]
+name = "hytale-server"
+type = "udp"
+localIP = "127.0.0.1"
+localPort = 5520
+remotePort = 5520
