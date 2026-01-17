@@ -5,4 +5,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = providers.gradleProperty("mod_name").getOrElse("HytaleMod")
+rootProject.name = HytaleMod
