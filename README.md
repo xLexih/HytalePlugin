@@ -30,4 +30,5 @@ Built plugin: `build/libs/<mod_name>-<version>.jar`
 ## Tips
 
 - Run `./gradlew clean` after changing mod name/group
+- Asset editor changes for the `Common` directory require server restart. (Edits outside the editor work without a restart)
 - **Never commit the `run/` directory** - it contains authentication credentials
