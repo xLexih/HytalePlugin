@@ -1,7 +1,7 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
-        mavenCentral()
+        maven("https://mvn.ultradev.app/snapshots")
     }
 }
 
