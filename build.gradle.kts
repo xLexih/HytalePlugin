@@ -13,7 +13,7 @@ repositories { mavenCentral() }
 dependencies { testImplementation(kotlin("test")) }
 
 hytale {
-    patchline = "pre-release"
+    patchline = "release"
     allowOp = true
 }
 
