@@ -18,8 +18,8 @@ A template for developing Hytale server plugins.
 
 | Task | Description |
 |------|-------------|
-| `./gradlew runServer` | Build and run the server |
 | `./gradlew generateSources` | Generate the sources from HytaleServer.jar |
+| `./gradlew runServer` | Build and run the server |
 | `./gradlew build` | Build the plugin shadowJar |
 | `./gradlew clean` | Clean build files and run directory |
 
