@@ -4,12 +4,15 @@
     "Main": "dev.lexih.mod.TestPlugin",
     "Version": "0.0.1",
     "Description": "Example plugin",
-    "Authors": [{ "Name": "Lexih" }],
+    "Authors": [{
+        "Name": "Lexih"
+    }],
     "Website": "https://lexih.dev",
     "ServerVersion": "*",
     "Dependencies": { },
     "OptionalDependencies": { },
     "LoadBefore": { },
+    "SubPlugins": [ ],
     "DisabledByDefault": false,
     "IncludesAssetPack": true
 }

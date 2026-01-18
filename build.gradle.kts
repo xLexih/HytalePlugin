@@ -21,11 +21,11 @@ hytale {
     manifest {
         group = "Lexih"
         name = "TestPlugin"
-        mainClass = "dev.lexih.mod.TestPlugin"
+        version = project.version.toString()
+        mainClass = project.group.toString() + '.' + name.get()
         description = "Example plugin"
         website = "https://lexih.dev"
         author("Lexih")
-        version = project.version.toString()
         includesAssetPack = true
     }
 }
