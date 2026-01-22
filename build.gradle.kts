@@ -1,12 +1,9 @@
 @file:Suppress("PropertyName", "SpellCheckingInspection")
 
-import app.ultradev.hytalegradle.manifest.ManifestExtension
-
-
 plugins {
     kotlin("jvm") version "2.3.0"
     id("com.gradleup.shadow") version "9.3.1"
-    id("app.ultradev.hytalegradle") version "1.6.7"
+    id("app.ultradev.hytalegradle") version "2.0.0"
 }
 
 group = "dev.lexih.mod"
@@ -16,6 +13,7 @@ repositories { mavenCentral() }
 dependencies { testImplementation(kotlin("test")) }
 
 hytale {
+    version = "latest.release"
     patchline = "pre-release"
     allowOp = true
     manifest {
