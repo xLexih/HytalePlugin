@@ -32,3 +32,4 @@ Built plugin: `build/libs/<mod_name>-<version>.jar`
 - Run `./gradlew clean` after changing mod name/group
 - Asset editor changes for the `Common` directory require server restart. (Edits outside the editor work without a restart)
 - **Never commit the `run/` directory** - it contains authentication credentials
+- See the [HytaleGradlePlugin repository](https://github.com/MrMineO5/HytaleGradlePlugin/) for full configuration options and documentation
