@@ -10,9 +10,9 @@ A template for developing Hytale server plugins.
 ## Quick Start
 
 1. Clone this template
-3. Generate the sources `./gradlew generateSources`
-4. Run `./gradlew runServer`
-5. Authenticate with `auth login` and `auth persistence Encrypted`
+2. Generate the sources `./gradlew generateSources`
+3. Run `./gradlew runServer`
+4. Authenticate with `auth login` and `auth persistence Encrypted`
 
 ## Gradle Tasks
 
