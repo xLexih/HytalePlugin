@@ -10,7 +10,7 @@ public class TestPlugin extends JavaPlugin {
 
     public TestPlugin(JavaPluginInit init) {
         super(init);
-        logger.atInfo().log("Hella from %s version %s".formatted(getName(), getManifest().getVersion()));
+        logger.atInfo().log("Hello from %s version %s".formatted(getName(), getManifest().getVersion()));
     }
 
     @Override
