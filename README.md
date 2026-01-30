@@ -13,6 +13,7 @@ A template for developing Hytale server plugins.
 2. Generate the sources `./gradlew generateSources`
 3. Run `./gradlew runServer`
 4. Authenticate with `auth login` and `auth persistence Encrypted`
+5. Join the server through `localhost:5520`
 
 ## Gradle Tasks
 
