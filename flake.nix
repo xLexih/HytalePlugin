@@ -10,34 +10,57 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        jbr25 = pkgs.stdenv.mkDerivation rec {
+          pname = "jetbrains-jdk";
+          javaVersion = "25.0.1";
+          version = "b285.56";
 
-        jdk = pkgs.openjdk25;
+          src = pkgs.fetchurl {
+            url = "https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-${javaVersion}-linux-x64-${version}.tar.gz";
+            sha256 = "sha256-PrQgnFt9kSXdpCNh68KtPCgv7BFgvaJVPxKiiI6lZhw=";
+          };
+
+          nativeBuildInputs = [ pkgs.autoPatchelfHook ];
+
+          buildInputs = with pkgs; [
+            stdenv.cc.cc.lib zlib alsa-lib
+
+            xorg.libX11 xorg.libXext xorg.libXi xorg.libXrender xorg.libXtst
+            xorg.libXxf86vm xorg.libXcomposite xorg.libXdamage xorg.libXrandr
+            xorg.libXcursor
+            libGL libglvnd mesa libdrm
+            fontconfig freetype cairo pango
+            glib dbus atk at-spi2-atk cups
+            wayland libxkbcommon
+            nspr nss systemd
+          ];
+
+          installPhase = ''
+            mkdir -p $out
+            cp -r * $out/
+          '';
+
+          dontStrip = true;
+        };
+
         idea = pkgs.jetbrains.idea-oss;
+
       in
       {
         devShells.default = pkgs.mkShell {
-          name = "hytale-kotlin-dev";
-
-          buildInputs = with pkgs; [
-            jdk
+          packages = with pkgs; [
+            jbr25
             kotlin
             ktlint
-            
             gradle
             maven
-
             frp
-
             idea
             bind
           ];
 
-          env = {
-            JAVA_HOME = "${jdk}/lib/openjdk";
-            JDK_HOME = "${jdk}/lib/openjdk";
-            GRADLE_OPTS = "-Dorg.gradle.java.home=${jdk}/lib/openjdk";
-            KOTLIN_HOME = "${pkgs.kotlin}";
-          };
+          JAVA_HOME = "${jbr25}";
+          GRADLE_OPTS = "-Dorg.gradle.java.home=${jbr25}";
 
           shellHook = ''
             echo "══════════════════════════════════════════"
@@ -49,14 +72,14 @@
           '';
         };
 
-        apps = {
-          idea = {
-            type = "app";
-            program = "${idea}/bin/idea-oss";
-          };
-          default = self.apps.${system}.idea;
+        apps.default = {
+          type = "app";
+          program = "${pkgs.writeShellScript "idea-here" ''
+            exec ${idea}/bin/idea-oss "$(pwd)" "$@"
+          ''}";
         };
-        
+
         formatter = pkgs.nixpkgs-fmt;
       });
 }
+
